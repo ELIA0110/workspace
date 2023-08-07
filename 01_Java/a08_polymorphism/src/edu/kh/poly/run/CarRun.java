@@ -81,5 +81,7 @@ public class CarRun {
 		System.out.println( ((Spark)carArr[2]).getDiscountRate() );
 		
 		// 집 집
+		
+		// 학원에서 내용 추가했음
 	}
 }
