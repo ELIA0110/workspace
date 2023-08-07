@@ -80,6 +80,6 @@ public class CarRun {
 		
 		System.out.println( ((Spark)carArr[2]).getDiscountRate() );
 		
-	
+		// 집 집
 	}
 }
