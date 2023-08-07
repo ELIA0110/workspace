@@ -53,7 +53,9 @@ public class Car extends Object{
 		return "Car [wheel=" + wheel + ", seat=" + seat + ", fuel=" + fuel + "]";
 	}
 	
-	
+	public void bindingTest() {
+		System.out.println("Car 자료형입니다.");
+	}
 	
 	
 	
