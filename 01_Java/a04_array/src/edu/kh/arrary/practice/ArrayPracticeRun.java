@@ -5,6 +5,6 @@ public class ArrayPracticeRun {
 		
 		ArrayPractice example3 = new ArrayPractice();
 		
-		example3.ex1();
+		example3.ex6();
 	}
 }

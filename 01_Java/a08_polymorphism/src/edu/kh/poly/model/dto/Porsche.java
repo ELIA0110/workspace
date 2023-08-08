@@ -29,7 +29,10 @@ public class Porsche extends Car {
 	// super.toString() : 상속받은 부모 것이 먼저 나오고 뒤에 붙는다.
 	}
 	
-	
+	@Override
+	public void bindingTest() {
+		System.out.println("Porsche 자료형입니다.");
+	}
 	
 	
 	
