@@ -55,12 +55,13 @@ public class ExceptionService {
 //		System.out.print("숫자 2 : ");
 //		int input2 = sc.nextInt();
 //		
-//		System.out.println(input1 / input2);
-//		
 //		if(input2 == 0) {
 //			System.out.println("0으로 나눌 수 없습니다");
 //			return;
 //		}
+		
+//		System.out.println(input1 / input2);
+//		
 		
 		try {
 			System.out.print("숫자 1 : ");
@@ -163,9 +164,9 @@ public class ExceptionService {
 			default : System.out.println("잘못 입력");
 			}
 		} catch(Exception e){
-			System.err.println(e.getMessage()); // <강제 발생>
+			System.err.println(e.getMessage()); 
 		}
-		finally {
+		finally {// <강제 발생>
 			System.out.println("***무조건 실행***");
 		}
 		
