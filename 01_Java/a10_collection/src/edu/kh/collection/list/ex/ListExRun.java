@@ -6,6 +6,6 @@ public class ListExRun {
 		
 		ListEx list = new ListEx();
 		
-		list.ex1();
+		list.ex2();
 	}
 }
