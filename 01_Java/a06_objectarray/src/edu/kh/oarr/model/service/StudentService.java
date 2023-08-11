@@ -39,7 +39,7 @@ public class StudentService {
 			studentArr[i].setKor(random.nextInt(101));
 			studentArr[i].setEng(random.nextInt(101));
 			studentArr[i].setMath(random.nextInt(101));
-		}
+		} 
 	}
 	
 	
@@ -67,14 +67,12 @@ public class StudentService {
 		//    false를 반환
 		
 		
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
 	/** 학생 전체 조회 서비스*/
 	public Student[] selectAll() {
-		// TODO Auto-generated method stub
 		return studentArr;
 	}
 
@@ -112,7 +110,6 @@ public class StudentService {
 
 	/** 학생 정보 수정 서비스 */
 	public void updateStudent(Student s, int kor, int eng, int math) {
-		// TODO Auto-generated method stub
 		
 		s.setKor(kor);
 		s.setEng(eng);
@@ -123,7 +120,6 @@ public class StudentService {
 
 
 	public Student[] selectName(String name) {
-		// TODO Auto-generated method stub
 		
 		// 기본 자료형 || 참조형(주소)
 		// 비교 연산자 (==, !=)
@@ -182,7 +178,6 @@ public class StudentService {
 
 	/** 평균 최고점, 최저점 학생 찾기 */
 	public Student[] selectMaxMin() {
-		// TODO Auto-generated method stub
 		
 		Student[] arr = new Student[2]; //[0] : 최고점, [1] : 최저점
 		

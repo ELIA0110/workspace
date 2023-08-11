@@ -29,7 +29,6 @@ public class StudentService {
 	}
 
 	public boolean addStudent(int grade, int ban, int number, String name) {
-		// TODO Auto-generated method stub
 		for(int i=0 ; i<studentArr.length ; i++) {
 			
 			if(studentArr[i] == null) {
@@ -43,8 +42,51 @@ public class StudentService {
 		
 		
 	}
+
+	
+	public Student[] selectAll() {
+		return studentArr;
+	}
+
 	
 	
+	public Student selectIndex(int index) {
+		
+		if(index < 0 || index >= studentArr.length || studentArr[index] == null ) {
+			
+			return null;
+		}
+		return studentArr[index];
+		
+	}
+
+	
+	public String selectScore(int index) {
+		
+		if( index < 0 || index >= studentArr.length || studentArr[index] == null) {
+			
+			return "해당 인덱스에 학생 정보가 존재하지 않습니다.";
+		}
+		Student s = studentArr[index];
+		
+		int sum = s.getKor() + s.getEng() + s.getMath();
+		
+		return String.format("[%s] 국어:%d, 영어: %d, 수학:%d, 합계:%d, 평균:%.1f",
+				s.getName(), s.getKor(), s.getEng(), s.getMath(), sum, sum/3.0);
+	}
+	
+	
+	public void updateStudent(Student s, int kor, int eng, int math) {
+		
+		s.setKor(kor);
+		s.setEng(eng);
+		s.setMath(math);
+		
+	}
+
+	public Student[] selectName(String name) {
+		return null;
+	}
 	
 	
 	

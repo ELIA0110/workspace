@@ -3,8 +3,11 @@ package edu.kh.inheritance.model.dto;
        // 상속 불가					// 모든 클래스의 최상위 클래스
 public /*final*/class Parent extends Object{
 							// 미작성 시 컴파일러가 추가
+	
+	
 	private int money = 100_000_000; // 1억
 	private String lastName = "홍";
+	
 	
 	public Parent() {
 		System.out.println("Parent() 기본 생성자로 부모 객체 생성");

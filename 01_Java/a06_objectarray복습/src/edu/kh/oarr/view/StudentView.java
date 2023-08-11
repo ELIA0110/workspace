@@ -2,6 +2,7 @@ package edu.kh.oarr.view;
 
 import java.util.Scanner;
 
+import edu.kh.oarr.model.dto.Student;
 import edu.kh.oarr.model.service.StudentService;
 
 public class StudentView {
@@ -29,12 +30,12 @@ public class StudentView {
 			input = sc.nextInt();
 			
 			switch(input) {
-			case 1 :  break;
-			case 2 :  break;
-			case 3 :  break;
-			case 4 : break;
-			case 5 : break;
-			case 6 :  break;
+			case 1 : System.out.println(addStudent()); break;
+			case 2 : selectAll(); break;
+			case 3 : selectIndex(); break;
+			case 4 : //selectName(); break;
+			case 5 : //updateStudent(); break;
+			case 6 : //selectScore(); break;
 			case 7 : break;
 			
 			case 0 : System.out.println("[프로그램 종료]"); break;
@@ -73,14 +74,108 @@ public class StudentView {
 		}
 	}
 	
+	private void selectAll() {
 		
+		System.out.println("\n-----학생 전체 조회-----\n");
 		
+		Student[] arr = service.selectAll();
 		
+		for(Student s : arr) {
+			
+			if(s == null) {
+				break;
+			}
+			
+			System.out.println(s.toString());
+		}
 		
-		
-		
+	}
 	
 	
+	private void selectIndex() {
+		System.out.println("\n-----학생 1명 정보 조회(인덱스)-----");
+		
+		System.out.print("조회할 학생의 인덱스 번호를 입력하세요 : ");
+		int index = sc.nextInt();
+		
+		Student s = service.selectIndex(index);
+		
+		if(s == null) {
+			System.out.println("해당 인덱스에 학생 정보가 존재하지 않습니다");
+			return;
+		}else {
+			System.out.println("학년 : " + s.getGrade());
+			System.out.println("반 : " + s.getBan());
+			System.out.println("번호 : " + s.getNumber());
+			System.out.println("이름 : " + s.getName());
+			System.out.println("국어 점수 : " + s.getKor() + "점");
+			System.out.println("영어 점수 : " + s.getEng() + "점");
+			System.out.println("수학 점수 : " + s.getMath() + "점");
+		}
+		
+	}
+	
+		
+	private void selectScore() {
+		System.out.println("\n-----학생 1명 점수 조회(점수, 합계, 평균)-----");
+		
+		System.out.print("점수를 조회할 학생의 인덱스 번호를 입력하세요 : ");
+		int index = sc.nextInt();
+		
+		String str = service.selectScore(index);
+		
+		System.out.println(str);
+		
+		
+	}
+		
+		
+	private void updateStudent() {
+		
+		System.out.println("\n-----학생 정보 수정(인덱스)-----");
+		
+		System.out.println("수정할 학생의 인덱스 번호를 입력하세요 : ");
+		int index = sc.nextInt();
+		
+		Student s = service.selectIndex(index);
+		
+		if(s == null) {
+			System.out.println("해당 인덱스에 학생 정보가 존재하지 않습니다.");
+			return;
+		}
+		System.out.print("수정할 국어 점수 : ");
+		int kor = sc.nextInt(); 
+		
+		System.out.print("수정할 영어 점수 : ");
+		int eng = sc.nextInt(); 
+		
+		System.out.print("수정할 수학 점수 : ");
+		int math = sc.nextInt(); 
+		
+		service.updateStudent(s, kor, eng, math);
+		
+		System.out.println("수정되었습니다.");
+	}
+		
+	
+	public void selectName() {
+		System.out.println("\n-----학생 이름으로 조회-----");
+		
+		System.out.println("조회할 학생 이름을 입력하세요 : ");
+		
+		String name = sc.next();
+		
+		// 이름이 일치하는 모든 학생을 조회하는 서비스 호출
+		Student[] arr = service.selectName(name);
+		
+		if(arr == null) {
+			System.out.println("일치하는 학생이 없습니다");
+			return;
+		}
+		for(Student s : arr) {
+			System.out.println(s.toString());
+		}
+	}
 	
 	
 	

@@ -4,9 +4,7 @@ public class Spark extends Car{
 	
 	private double discountRate;
 	
-	public Spark() {
-		// TODO Auto-generated constructor stub
-	}
+	public Spark() {}
 
 	public Spark(int wheel, int seat, String fuel, double discountRate) {
 		super(wheel, seat, fuel);

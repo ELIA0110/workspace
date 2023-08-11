@@ -33,7 +33,7 @@ public class PolyService {
 			
 			// instanceof를 이용해서 차종 출력
 			if(arr[i] instanceof Porsche) {
-				System.out.print("포르쉬 : ");
+				System.out.print("포르쉐 : ");
 			} else if(arr[i] instanceof Spark) {
 				System.out.print("스파크 : ");
 			} else {// Car

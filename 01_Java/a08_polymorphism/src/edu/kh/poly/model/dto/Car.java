@@ -9,7 +9,6 @@ public class Car extends Object{
 	
 	// 기본 생성자 자동 완성 : ctrl + space bar -> enter
 	public Car() {
-		// TODO Auto-generated constructor stub
 	
 	}
 
