@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Client복습 {
 
-	public void start() { 
+	public void start() {
 		
 		String ip = "192.168.10.19";
 		int port = 8500;
@@ -25,10 +25,10 @@ public class Client복습 {
 		PrintWriter pw = null;
 		
 		try {
-			
-			socket = new Socket(ip, port);
+			System.out.println("클라이언트 입니다.");
 			
 			if(socket != null) {
+				
 				is = socket.getInputStream();
 				os = socket.getOutputStream();
 				
@@ -39,13 +39,16 @@ public class Client복습 {
 				System.out.println(serverMessage);
 				
 				Scanner sc = new Scanner(System.in);
-				
-				System.out.println("서버로 전달할 메시지 : ");
 				String clientMessage = sc.nextLine();
 				
 				pw.println(clientMessage);
 				pw.flush();
+				
+				
+				
 			}
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -54,10 +57,16 @@ public class Client복습 {
 				if(pw != null) pw.close();
 				
 				if(socket != null) socket.close();
-			}catch(IOException e	) {
+			
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-	
+		
+		
+		
+		
+		
+		
 	}
 }

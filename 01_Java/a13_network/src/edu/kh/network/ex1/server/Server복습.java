@@ -28,12 +28,10 @@ public class Server복습 {
 		PrintWriter pw = null;
 		
 		try {
-			InetAddress inet = InetAddress.getLocalHost();
-			System.out.println("서버 ip 주소 : " + inet.getHostAddress());
+			InetAddress Inet = InetAddress.getLocalHost();
+			System.out.println("서버 IP 주소 : " + Inet.getHostAddress());
 			
-			serverSocket = new ServerSocket(port);
-			
-			System.out.println("서버입니다");
+			System.out.println("서버입니다.");
 			System.out.println("클라이언트 접속 대기중");
 			
 			clientSocket = serverSocket.accept();
@@ -48,9 +46,9 @@ public class Server복습 {
 			
 			Date now = new Date();
 			
-			SimpleDateFormat sdf = new SimpleDateFormat();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
-			String message = sdf.format(now);
+			String message = sdf.format(now) + "서버 접속 성공";
 			
 			pw.println(message);
 			pw.flush();
@@ -58,12 +56,15 @@ public class Server복습 {
 			String clientMessage = br.readLine();
 			String clientIP = clientSocket.getInetAddress().getHostAddress();
 			
-			System.out.println(clientIP + "로부터 받은 메시지"+ clientMessage);
+			System.out.println(clientIP + "로부터 받은 메시지 : " + clientMessage);
+			
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
+		}finally{
 			try {
-				if(is != null) is.close();
+				if(br != null) br.close();
 				if(pw != null) pw.close(); 
 				
 				if(serverSocket != null) serverSocket.close();
@@ -72,6 +73,11 @@ public class Server복습 {
 				e.printStackTrace();
 			}
 		}
+		
+		
+		
+		
+		
 		
 	}
 	
