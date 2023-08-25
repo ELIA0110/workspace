@@ -701,12 +701,24 @@ WHERE (DEPT_CODE, JOB_CODE) IN (SELECT DEPT_CODE, JOB_CODE
 
 -- 5. 77년생 여자 사원과 동일한 부서이면서 동일한 사수를 가지고 있는 사원을 조회하시오
 -- 사번, 이름, 부서코드, 사수번호, 주민번호, 고용일
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, MANAGER_ID, EMP_NO, HIRE_DATE
+FROM EMPLOYEE
+WHERE (DEPT_CODE, MANAGER_ID) = (SELECT DEPT_CODE, MANAGER_ID FROM EMPLOYEE
+								 WHERE EMP_NO LIKE '77%'
+							     AND SUBSTR(EMP_NO,8,1) = '2'); 
 
 -- 6. 부서별 입사일이 가장 빠른 사원의
 -- 사번, 이름, 부서명(NULL이면 '소속없음'), 직급명, 입사일을 조회하고
 -- 입사일이 빠른 순으로 조회하시오
 -- 단, 퇴사한 직원은 제외하고 조회..
-
+SELECT EMP_ID, EMP_NAME, NVL(DEPT_TITLE, '소속없음'), JOB_NAME, 
+		TO_CHAR(HIRE_DATE,'YYYY/MM/DD')
+FROM EMPLOYEE MAIN
+JOIN JOB USING (JOB_CODE)
+LEFT JOIN DEPARTMENT ON(DEPT_ID = DEPT_CODE)
+WHERE HIRE_DATE = (SELECT MIN(HIRE_DATE) FROM EMPLOYEE SUB 
+				   WHERE NVL(SUB.DEPT_CODE, 'XXX') = NVL(MAIN.DEPT_CODE, 'XXX')
+				   AND ENT_YN != 'Y');
 -- 7. 직급별 나이가 가장 어린 직원의
 -- 사번, 이름, 직급명, 나이, 보너스 포함 연봉을 조회하고
 -- 나이순으로 내림차순 정렬하세요
